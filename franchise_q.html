@@ -19,7 +19,7 @@
             padding: 20px;
         }
         header {
-            background-image: url('https://via.placeholder.com/960x400.png?text=SLAM+BURGER+Hero+Image'); /* 대표 이미지 */
+            background-image: url('https://d12zq4w4guq0ec.cloudfront.net/20240501114510_20240501104616892.jpeg'); /* 대표 이미지 (갈비버거) */
             background-size: cover;
             background-position: center;
             color: white;
@@ -27,6 +27,21 @@
             padding: 100px 20px;
             border-radius: 0 0 15px 15px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 0 0 15px 15px;
+        }
+        header h1, header p {
+            position: relative;
+            z-index: 1;
         }
         header h1 {
             font-size: 3.5rem;
@@ -63,6 +78,7 @@
         }
         .feature-item {
             flex-basis: 30%;
+            min-width: 250px;
             background: #fff9f9;
             padding: 20px;
             border-radius: 10px;
@@ -87,6 +103,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            font-size: 0.9rem;
         }
         .comparison-table th, .comparison-table td {
             border: 1px solid #ddd;
@@ -107,11 +124,24 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
+        .gallery .menu-item {
+            text-align: center;
+        }
         .gallery img {
             width: 100%;
-            height: auto;
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .gallery .menu-item p {
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
         .form-section {
             background-color: #333;
@@ -124,12 +154,15 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        form input, form select, form textarea {
+        form input, form select, form textarea, form button {
             padding: 12px;
             border-radius: 5px;
             border: none;
             font-size: 1rem;
+            font-family: 'Noto Sans KR', sans-serif;
         }
         form button {
             padding: 15px;
@@ -169,17 +202,17 @@
                 <div class="feature-item">
                     <div class="icon">💰</div>
                     <h3>압도적인 수익 구조</h3>
-                    <p><strong>업계 최저 수준의 35% 미만 원가율</strong>을 목표로 하여 점주님의 순수익을 극대화합니다 [1, 2]. 월 매출 5천만 원 기준, 타사 대비 월 500만 원 이상의 추가 수익을 기대할 수 있습니다 [1].</p>
+                    <p><strong>업계 최저 수준의 35% 미만 원가율</strong>을 목표로 하여 점주님의 순수익을 극대화합니다 [1, 2]. 월 매출 5천만 원 기준, 경쟁사 대비 **월 500만 원 이상의 추가 수익**을 기대할 수 있습니다 [1, 2].</p>
                 </div>
                 <div class="feature-item">
                     <div class="icon">🤖</div>
                     <h3>AI 솔루션으로 쉬운 운영</h3>
-                    <p>AI 비서 **'레스토지니'**가 발주, 재고 관리, 마케팅 제안까지 알아서 도와줍니다 [3, 4]. 외식업 초보라도 데이터 기반의 스마트한 매장 운영이 가능합니다 [3, 5].</p>
+                    <p>AI 비서 **'레스토지니'**가 발주, 재고 관리, 마케팅 제안까지 알아서 도와줍니다 [3-5]. 외식업 초보라도 데이터 기반의 스마트한 매장 운영이 가능합니다 [5, 6].</p>
                 </div>
                 <div class="feature-item">
                     <div class="icon">📈</div>
                     <h3>직영점으로 검증된 성공</h3>
-                    <p>경쟁이 치열한 상권의 **직영점(대학로점 등) 운영**을 통해 매출과 수익성이 검증되었습니다 [6, 7]. 성공 노하우가 담긴 시스템을 그대로 전수받으세요.</p>
+                    <p>경쟁이 치열한 상권의 **직영점(대학로점 등) 운영**을 통해 매출과 수익성이 검증되었습니다 [3, 7]. 성공 노하우가 담긴 시스템을 그대로 전수받으세요 [7, 8].</p>
                 </div>
             </div>
         </div>
@@ -196,74 +229,91 @@
                     <tr>
                         <th>구분</th>
                         <th class="highlight">슬램버거</th>
-                        <th>A사 (수제버거) [8]</th>
-                        <th>B사 (대형 프랜차이즈) [1]</th>
+                        <th>버거리 (수제버거) [9]</th>
+                        <th>맘스터치 [10, 11]</th>
+                        <th>프랭크버거 [12, 13]</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>목표 원재료비율</strong></td>
-                        <td class="highlight"><strong>35% 미만</strong> [1]</td>
+                        <td class="highlight"><strong>35% 미만</strong> [1, 3]</td>
                         <td>32% ~ 38% [8]</td>
-                        <td>45% ~ 50% [1]</td>
+                        <td>48% [14, 15]</td>
+                        <td>40% [16, 17]</td>
                     </tr>
                     <tr>
-                        <td><strong>인테리어 평당가</strong><br><small>(간판/주방 제외)</small></td>
-                        <td class="highlight"><strong>190만원대 목표</strong><br><small>(경쟁사 대비 낮은 수준 유지 노력)</small> [9, 10]</td>
-                        <td>약 209만원 [11]</td>
-                        <td>약 200만원 [9]</td>
-                    </tr>
-                     <tr>
-                        <td><strong>월 예상 순이익</strong><br><small>(월 매출 5천 기준, 원가율 차이)</small></td>
-                        <td class="highlight"><strong>타사 대비 월 500만원+ α</strong> [1]</td>
-                        <td colspan="2">상대적으로 낮은 수익 기대</td>
+                        <td><strong>인테리어 (평당)</strong></td>
+                        <td class="highlight"><strong>190만원대 목표</strong> [18, 19]</td>
+                        <td>약 209만원 (16평) [9]</td>
+                        <td>약 224만원 (20평) [20, 21]</td>
+                        <td>약 285만원 (10평) [22, 23]</td>
                     </tr>
                 </tbody>
             </table>
-            <p style="font-size: 0.8rem; color: #888; text-align: center; margin-top: 15px;">
-                * 위 내용은 소스에 기반한 추정치이며, 실제 비용 및 수익은 점포 상황에 따라 달라질 수 있습니다. [11]
-            </p>
         </div>
 
-        <!-- 3. 슬램버거 사진 갤러리 섹션 -->
+        <!-- 3. 슬램버거 사진 갤러리 (요청하신 이미지로 업데이트) -->
         <div class="section">
-            <h2 class="section-title">눈과 입이 즐거운, 슬램버거</h2>
+            <h2 class="section-title">슬램버거 대표 메뉴</h2>
             <div class="gallery">
-                <img src="https://via.placeholder.com/400x300.png?text=Signature+Galbi+Burger" alt="슬램버거 시그니처 갈비버거">
-                <img src="https://via.placeholder.com/400x300.png?text=Delicious+Burger+Set" alt="푸짐한 슬램버거 세트">
-                <img src="https://via.placeholder.com/400x300.png?text=Trendy+Store+Interior" alt="트렌디한 매장 인테리어">
-                <img src="https://via.placeholder.com/400x300.png?text=Fresh+Ingredients" alt="신선한 재료">
-                <img src="https://via.placeholder.com/400x300.png?text=Happy+Customers" alt="슬램버거를 즐기는 고객들">
-                <img src="https://via.placeholder.com/400x300.png?text=Delivery+Package" alt="배달 최적화 패키지">
+                <div class="menu-item">
+                    <img src="https://d12zq4w4guq0ec.cloudfront.net/20240501114510_20240501104616892.jpeg" alt="갈비버거">
+                    <p>시그니처 갈비버거</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://d12zq4w4guq0ec.cloudfront.net/20240501114532_20240501104616886.jpeg" alt="슬램버거">
+                    <p>슬램버거</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://d12zq4w4guq0ec.cloudfront.net/20240501114521_20240501104616889.jpeg" alt="치즈버거">
+                    <p>더블 치즈버거</p>
+                </div>
+                 <div class="menu-item">
+                    <img src="https://d12zq4w4guq0ec.cloudfront.net/20240501114603_20240501104616900.jpeg" alt="해쉬브라운 버거">
+                    <p>해쉬브라운 버거</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://d12zq4w4guq0ec.cloudfront.net/20240501114543_20240501104616895.jpeg" alt="치킨버거">
+                    <p>클래식 치킨버거</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://d12zq4w4guq0ec.cloudfront.net/20240501114624_20240501104616897.jpeg" alt="어니언링">
+                    <p>어니언링 & 사이드</p>
+                </div>
             </div>
         </div>
-
+        
         <!-- 4. 가맹 문의 섹션 -->
         <div class="section form-section">
             <h2 class="section-title">지금 바로 성공 창업을 문의하세요</h2>
-            <form action="#" method="POST">
+            <p style="text-align:center; margin-top:-20px; margin-bottom:30px;">
+                간단한 정보를 남겨주시면, 전문 창업 컨설턴트가 빠르게 연락드리겠습니다.
+            </p>
+            <form action="https://formspree.io/f/xgvnkgok" method="POST">
                 <input type="text" name="name" placeholder="성함" required>
-                <input type="tel" name="phone" placeholder="연락처 ('-' 없이 입력)" required>
+                <input type="tel" name="phone" placeholder="연락처 (예: 010-1234-5678)" required>
                 <input type="email" name="email" placeholder="이메일 주소">
                 <select name="region" required>
                     <option value="">창업 희망 지역을 선택하세요</option>
                     <option value="서울">서울</option>
                     <option value="경기/인천">경기/인천</option>
-                    <option value="충청">충청</option>
                     <option value="강원">강원</option>
-                    <option value="경상">경상</option>
+                    <option value="충청">충청</option>
                     <option value="전라">전라</option>
+                    <option value="경상">경상</option>
                     <option value="제주">제주</option>
                 </select>
-                <textarea name="inquiry" rows="5" placeholder="궁금한 점이나 추가 문의사항을 남겨주세요. (예: 예상 투자금, 창업 경험 유무 등)"></textarea>
-                <button type="submit">가맹 상담 신청하기</button>
+                <textarea name="inquiry" rows="4" placeholder="기타 문의사항이나 궁금한 점을 남겨주세요. (예: 창업 가능 예산, 희망 평수 등)"></textarea>
+                <button type="submit">가맹 문의 접수하기</button>
             </form>
         </div>
-
     </div>
 
     <footer>
-        <p>&copy; 2025 Slam Burger Inc. All Rights Reserved.</p>
+        <p>&copy; 2025 SLAM BURGER. All Rights Reserved.</p>
+        <p>주식회사 컨트롤엠 | 대표: 원종관 | 사업자등록번호: 123-45-67890</p>
+        <p>서울특별시 강남구 테헤란로 123, 45층</p>
     </footer>
 
 </body>
